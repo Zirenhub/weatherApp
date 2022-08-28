@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --main-box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+}
+
+body {
+    background-image: url(./assets/images/neha-maheen-mahfin-TOKRHlWE56s-unsplash.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.search-bar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#searchBar {
+    font-size: 1.2rem;
+    font-weight: 800;
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+    border: none;
+    box-shadow: var(--main-box-shadow);
+}
+
+#searchBar:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+#searchButton {
+    margin-top: 20px;
+    padding: 5px 15px;
+    font-size: 0.8rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
