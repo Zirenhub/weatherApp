@@ -7,7 +7,9 @@ module.exports = {
   entry: './src/app.js',
   devtool: 'inline-source-map',
   devServer: {
-    static: './dist',
+    static: './dist/',
+    hot: true,
+    watchFiles: ['src/*.html'],
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -32,7 +34,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'todo',
+      title: 'WeatherApp',
       filename: 'index.html',
       template: './src/index.html',
     }),
