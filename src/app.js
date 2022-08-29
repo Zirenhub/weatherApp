@@ -14,12 +14,14 @@ const getWeatherInfo = async (searchBar) => {
   let sysData = weatherData.sys;
   let cloudsData = weatherData.weather;
   let placeName = weatherData.name;
+  let timezone = weatherData.timezone;
 
   let newLocation = new processData(
     mainData,
     sysData,
     cloudsData,
-    placeName
+    placeName,
+    timezone
   );
   console.log(newLocation);
 
