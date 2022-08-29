@@ -1,15 +1,31 @@
 import './style.css';
-// import { bindEvents } from './components/dom-manipulation';
-// import { fetchWeatherInfo } from './components/api-functions';
-// import { processData } from './components/process-data';
+import {
+  bindEvents,
+  pageContent,
+} from './components/dom-manipulation';
+import { fetchWeatherInfo } from './components/api-functions';
+import { processData } from './components/process-data';
 
-// const getWeatherInfo = async (searchBar) => {
-//   let weatherData = await fetchWeatherInfo(searchBar.value);
-//   let mainData = weatherData.main;
-//   let newLocation = new processData(mainData);
-//   console.log(newLocation);
-// };
+const getWeatherInfo = async (searchBar) => {
+  let weatherData = await fetchWeatherInfo(searchBar.value);
+  searchBar.value = '';
 
-// bindEvents();
+  let mainData = weatherData.main;
+  let sysData = weatherData.sys;
+  let cloudsData = weatherData.weather;
+  let placeName = weatherData.name;
 
-// export { getWeatherInfo };
+  let newLocation = new processData(
+    mainData,
+    sysData,
+    cloudsData,
+    placeName
+  );
+  console.log(newLocation);
+
+  pageContent(newLocation);
+};
+
+bindEvents();
+
+export { getWeatherInfo };
