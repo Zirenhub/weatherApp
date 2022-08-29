@@ -58,10 +58,7 @@ body {
 }
 
 .temp-info>span {
-    background-image: url(./assets/images/110841_celsius_icon.png);
-    filter: brightness(0) invert(1);
-    height: 64px;
-    width: 64px;
+    margin-left: 5px;
 }
 
 .temp-info>p:first-child {
