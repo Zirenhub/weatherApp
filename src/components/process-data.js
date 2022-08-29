@@ -1,5 +1,5 @@
 class processData {
-  constructor(mainData, sysData, cloudsData, placeName) {
+  constructor(mainData, sysData, cloudsData, placeName, timezone) {
     this.feelsLike = mainData.feels_like;
     this.humidity = mainData.humidity;
     this.pressure = mainData.pressure;
@@ -8,13 +8,13 @@ class processData {
     this.tempMin = mainData.temp_min;
 
     this.country = sysData.country;
-    this.sunrise = sysData.sunrise;
-    this.sunset = sysData.sunset;
 
     this.desc = cloudsData[0].description;
     this.mainDesc = cloudsData[0].main;
 
     this.place = placeName;
+
+    this.timezone = timezone;
   }
 
   getFeelsLike() {
@@ -45,8 +45,16 @@ class processData {
     return this.desc;
   }
 
+  getCountry() {
+    return this.country;
+  }
+
   getPlace() {
     return this.place;
+  }
+
+  getTimezone() {
+    return this.timezone;
   }
 }
 
