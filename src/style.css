@@ -19,26 +19,138 @@ body {
     background-repeat: no-repeat;
 }
 
-.search-bar-container {
+.main-container {
+    display: flex;
+}
+
+.weather-container {
+    width: 340px;
+    margin-left: 5px;
+}
+
+.weather-content {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.weather-icon {
+    background-image: url(./assets/images/download-icon-sunny+temperature+weather+icon-1320196637430890623_256.png);
+    width: 256px;
+    height: 256px;
+}
+
+.weather-info {
+    color: #ffff;
+    text-align: center;
+    letter-spacing: 2px;
+    padding: 15px 15px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.25);
+    box-shadow: var(--main-box-shadow);
+}
+
+.temp-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.temp-info>span {
+    background-image: url(./assets/images/110841_celsius_icon.png);
+    filter: brightness(0) invert(1);
+    height: 64px;
+    width: 64px;
+}
+
+.temp-info>p:first-child {
+    margin-right: 15px;
+    color: #c6c6c6;
+}
+
+.location-details {
+    margin-top: 20px;
+    color: #ffff;
+    text-align: center;
+    letter-spacing: 2px;
+    padding: 15px 15px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.25);
+    box-shadow: var(--main-box-shadow);
+}
+
+#locationName {
+    font-size: 1.7rem;
+    font-weight: 800;
+}
+
+.search-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    margin-right: 340px;
     margin-top: 20px;
 }
 
 #searchBar {
     font-size: 1.2rem;
-    font-weight: 800;
     padding: 5px;
     text-align: center;
-    border-radius: 5px;
     border: none;
-    box-shadow: var(--main-box-shadow);
+    width: 20%;
+    border: 0;
+    border-bottom: 2px solid #efefefef;
+    outline: 0;
+    font-size: 1.3rem;
+    color: #fff;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+
+#searchBar::placeholder {
+    color: transparent;
+}
+
+#searchBar:placeholder-shown~.location-label {
+    font-size: 1.3rem;
+    cursor: text;
+    top: 10px;
+}
+
+.location-label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: #efefef;
 }
 
 #searchBar:focus {
-    box-shadow: none;
     outline: none;
+    padding-bottom: 6px;
+    font-weight: 700;
+    border-width: 3px;
+    border-image: linear-gradient(to right, #11998e, #38ef7d);
+    border-image-slice: 1;
+}
+
+#searchBar:focus~.location-label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: #11998e;
+    font-weight: 700;
+}
+
+#searchBar:required,
+.location-label:invalid {
+    box-shadow: none;
 }
 
 #searchButton {
@@ -48,4 +160,7 @@ body {
     border: none;
     border-radius: 10px;
     cursor: pointer;
+    color: #fff;
+    background-color: black;
+    box-shadow: var(--main-box-shadow);
 }
