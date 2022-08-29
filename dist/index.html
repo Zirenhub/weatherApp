@@ -1,18 +1,47 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Weather App</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script defer src="index_bundle.js"></script><link href="src/css/main.min.css" rel="stylesheet"></head>
-    <body>
-        <main class="main-container">
-            <div class="search-bar-container">
-                <input type="text" id="searchBar">
-                <button id="searchButton">Search</button>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Weather App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<script defer src="index_bundle.js"></script><link href="src/css/main.min.css" rel="stylesheet"></head>
+
+<body>
+    <main class="main-container">
+        <div class="weather-container">
+            <div class="weather-content">
+                <div class="weather-icon"></div>
+                <div class="weather-info">
+                    <span id="temp" class="temp-info">
+                        <p>current.</p>
+                        <span></span>
+                    </span>
+                    <span id="maxTemp" class="temp-info">
+                        <p>max.</p>
+                        <span></span>
+                    </span>
+                    <span id="minTemp" class="temp-info">
+                        <p>min.</p>
+                        <span></span>
+                    </span>
+                </div>
             </div>
-        </main>
-    </body>
+            <div class="location-details">
+                <div class="location-info">
+                    <span id="locationName"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="search-content">
+            <input type="input" id="searchBar" placeholder="Location" name="location" required>
+            <label for="location" class="location-label">Location</label>
+            <button id="searchButton">Search</button>
+        </div>
+    </main>
+</body>
+
 </html>
