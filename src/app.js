@@ -6,8 +6,8 @@ import {
 import { fetchWeatherInfo } from './components/api-functions';
 import { processData } from './components/process-data';
 
-const getWeatherInfo = async (searchBar) => {
-  let weatherData = await fetchWeatherInfo(searchBar.value);
+const getWeatherInfo = async (searchBar, unit) => {
+  let weatherData = await fetchWeatherInfo(searchBar.value, unit);
   searchBar.value = '';
 
   let mainData = weatherData.main;
