@@ -5,6 +5,8 @@ let cityTimezones = require('city-timezones');
 const searchBar = document.querySelector('#searchBar');
 const searchButton = document.querySelector('#searchButton');
 
+const weatherImage = document.querySelector('.weather-icon-sunny');
+
 const tempDisplay = document.querySelector('#temp');
 const feelsLike = document.querySelector('#feelsLike');
 const humidity = document.querySelector('#humidity');
@@ -69,6 +71,17 @@ const switchUnit = (target) => {
   }
 };
 
+const updateImage = (desc) => {
+  weatherImage.setAttribute('class', '');
+  if (desc.includes('clouds')) {
+    weatherImage.classList.add('weather-icon-cloudy');
+  } else if (desc.includes('rain')) {
+    weatherImage.classList.add('weather-icon-rainy');
+  } else {
+    weatherImage.classList.add('weather-icon-sunny');
+  }
+};
+
 const pageContent = (newLocation) => {
   tempDisplay.childNodes[2].remove();
   feelsLike.childNodes[2].remove();
@@ -91,6 +104,8 @@ const pageContent = (newLocation) => {
 
   locationDisplay.textContent = newLocation.getPlace();
   skyInfo.textContent = newLocation.getDesc();
+
+  updateImage(newLocation.getDesc());
 
   const cityLookup = cityTimezones.findFromCityStateProvince(
     `${newLocation.getPlace()}`
