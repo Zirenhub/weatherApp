@@ -215,3 +215,10 @@ body {
     background-color: black;
     box-shadow: var(--main-box-shadow);
 }
+
+.error-para {
+    color: rgb(149, 4, 4);
+    text-shadow: 0px 0px 25px rgba(255, 0, 0, 1);
+    margin-top: 10px;
+    font-size: 1.2rem;
+}
