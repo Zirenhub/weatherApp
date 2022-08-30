@@ -16,15 +16,17 @@ const locationDisplay = document.querySelector('#locationName');
 const countryInfo = document.querySelector('#countryInfo');
 const timeInfo = document.querySelector('#timeInfo');
 
+let unit = 'metric';
+
 const bindEvents = () => {
   searchBar.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
-      getWeatherInfo(searchBar);
+      getWeatherInfo(searchBar, unit);
     }
   });
 
   searchButton.addEventListener('click', () => {
-    getWeatherInfo(searchBar);
+    getWeatherInfo(searchBar, unit);
   });
 
   switchButton.addEventListener('click', (e) => {
@@ -35,8 +37,35 @@ const bindEvents = () => {
 
 const switchUnit = (target) => {
   if (target.textContent === '°F') {
-    tempDisplay.childNodes[2].textContent =
-      (tempDisplay.childNodes[2].textContent * 9) / 5 + 32;
+    tempDisplay.childNodes[2].textContent = Math.round(
+      (tempDisplay.childNodes[2].textContent * 9) / 5 + 32
+    );
+
+    feelsLike.childNodes[2].textContent = Math.round(
+      (feelsLike.childNodes[2].textContent * 9) / 5 + 32
+    );
+
+    tempDisplay.childNodes[3].textContent = '°F';
+    feelsLike.childNodes[3].textContent = '°F';
+
+    unit = 'imperial';
+    target.textContent = '°C';
+  } else if (target.textContent === '°C') {
+    tempDisplay.childNodes[2].textContent = Math.round(
+      ((tempDisplay.childNodes[2].textContent - 32) * 5) / 9
+    );
+
+    feelsLike.childNodes[2].textContent = Math.round(
+      ((feelsLike.childNodes[2].textContent - 32) * 5) / 9
+    );
+
+    tempDisplay.childNodes[3].textContent = '°C';
+    feelsLike.childNodes[3].textContent = '°C';
+
+    unit = 'metric';
+    target.textContent = '°F';
+  } else {
+    console.log('something went wrong');
   }
 };
 
@@ -44,13 +73,16 @@ const pageContent = (newLocation) => {
   tempDisplay.childNodes[2].remove();
   feelsLike.childNodes[2].remove();
   humidity.childNodes[2].remove();
+  if (document.querySelector('.error-para')) {
+    document.querySelector('.error-para').remove();
+  }
 
   const pTemp = document.createElement('p');
-  pTemp.textContent = newLocation.getTemp();
+  pTemp.textContent = Math.round(newLocation.getTemp());
   tempDisplay.insertBefore(pTemp, tempDisplay.childNodes[2]);
 
   const pFeelsLike = document.createElement('p');
-  pFeelsLike.textContent = newLocation.getFeelsLike();
+  pFeelsLike.textContent = Math.round(newLocation.getFeelsLike());
   feelsLike.insertBefore(pFeelsLike, feelsLike.childNodes[2]);
 
   const pHumidity = document.createElement('p');
